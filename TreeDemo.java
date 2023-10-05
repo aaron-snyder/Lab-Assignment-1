@@ -104,8 +104,19 @@ class Node{
 	   */
 	  
 	   public void postOrderTraversal(Node root){
-         //implement in here
-		   
+			// Base case
+			if (root == null) {
+				return;
+			}
+
+			// Go down left tree
+			postOrderTraversal(root.left);
+
+			// Go down right tree
+			postOrderTraversal(root.right);
+
+			// Print value with comma to seperate
+			System.out.print(root.value + ", ");
 	   }
 	   
 	   
@@ -191,8 +202,8 @@ class Node{
 	      t1.insert(90);
 	      t1.insert(22);
 	            
-	      System.out.print("in-order :   ");
-	      t1.inOrderTraversal(t1.root);
+	      System.out.print("post-order :   ");
+	      t1.postOrderTraversal(t1.root);
 	      System.out.println();
 	           
 	      
