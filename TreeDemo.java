@@ -126,7 +126,25 @@ class Node{
 	   with a specific value
 	   */
 	   public boolean find(Node root, int key){
+
 			boolean result = false;
+			// Base case
+			if (root == null) {
+				return false;
+			}
+
+			// Return case
+			if (root.value == key) {
+				return true;
+			}
+
+			// Search right if key is greater than node, left if less than
+			if (root.value < key) {
+				result = find(root.right, key);
+			} else {
+				result = find(root.left, key);
+			}
+			
 			return result;
 	   }
 	   
@@ -202,9 +220,16 @@ class Node{
 	      t1.insert(90);
 	      t1.insert(22);
 	            
-	      System.out.print("post-order :   ");
-	      t1.postOrderTraversal(t1.root);
-	      System.out.println();
+		  System.out.println("Pre-Order Traversal: ");
+		  t1.preOrderTraversal(t1.root);
+		  System.out.println("In-Order Traversal: ");
+		  t1.inOrderTraversal(t1.root);
+		  System.out.println("Post-Order Traversal: ");
+		  t1.postOrderTraversal(t1.root);
+	      System.out.println("Find: 90");
+	      System.out.println(t1.find(t1.root, 90));
+		  System.out.println("Find 91: ");
+		  System.out.println(t1.find(t1.root, 91));
 	           
 	      
 	   }  
