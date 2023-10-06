@@ -66,8 +66,8 @@ class Node{
 				return;
 			}
 			
-			// Print value and a comma to seperate
-			System.out.print(root.value + ", ");
+			// Print value with space to seperate
+			System.out.print(root.value + " ");
 
 			// Recursively go down left of node
 			preOrderTraversal(root.left);
@@ -90,8 +90,8 @@ class Node{
 			// Go down left tree
 			inOrderTraversal(root.left);
 
-			// Print value with comma to seperate
-			System.out.print(root.value + ", ");
+			// Print value with space to seperate
+			System.out.print(root.value + " ");
 
 			// Go down right tree
 			inOrderTraversal(root.right);
@@ -115,8 +115,8 @@ class Node{
 			// Go down right tree
 			postOrderTraversal(root.right);
 
-			// Print value with comma to seperate
-			System.out.print(root.value + ", ");
+			// Print value with space to seperate
+			System.out.print(root.value + " ");
 	   }
 	   
 	   
@@ -126,8 +126,8 @@ class Node{
 	   with a specific value
 	   */
 	   public boolean find(Node root, int key){
-
 			boolean result = false;
+
 			// Base case
 			if (root == null) {
 				return false;
@@ -155,8 +155,11 @@ class Node{
 	   with a smallest key
 	   */
 	   public int getMin(Node root){
-			int min = 0;
-			return min;
+			// Traverse down left tree until left child is null
+			while (root.left != null) {
+				root = root.left;
+			}
+			return root.value;
 	   }
 	  
 	  
@@ -166,8 +169,11 @@ class Node{
 	   with a largest key
 	   */
 	   public int getMax(Node root){
-			int max = 0;
-			return max;
+			// Traverse down right tree until right child is null
+			while (root.right != null) {
+				root = root.right;
+			}
+			return root.value;
 	   }
 	   
 	   
@@ -219,17 +225,36 @@ class Node{
 	      t1.insert(9);
 	      t1.insert(90);
 	      t1.insert(22);
-	            
+	      
+		  // Test preOrderTraversal
 		  System.out.println("Pre-Order Traversal: ");
 		  t1.preOrderTraversal(t1.root);
+		  System.out.println("\n");
+		  
+		  // Test inOrderTraversal
 		  System.out.println("In-Order Traversal: ");
 		  t1.inOrderTraversal(t1.root);
+		  System.out.println("\n");
+
+		  // Test postOrderTraversal
 		  System.out.println("Post-Order Traversal: ");
 		  t1.postOrderTraversal(t1.root);
+		  System.out.println("\n");
+
+		  // Test find (true)
 	      System.out.println("Find: 90");
 	      System.out.println(t1.find(t1.root, 90));
-		  System.out.println("Find 91: ");
+		  System.out.println();
+
+		  // Test find (false)
+		  System.out.println("Find: 91 ");
 		  System.out.println(t1.find(t1.root, 91));
+		  System.out.println();
+
+		  // Test getMin and getMax
+		  System.out.println("Minimum Number: " + t1.getMin(t1.root) + "\n");
+		  System.out.println("Maximum Number: " + t1.getMax(t1.root));
+		  
 	           
 	      
 	   }  
